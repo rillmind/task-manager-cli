@@ -11,6 +11,12 @@ delete, list, and mark the status of tasks. Tasks are stored in a JSON file for 
   <img src="https://raw.githubusercontent.com/catppuccin/catppuccin/main/assets/palette/macchiato.png">
 </p>
 
+## Why it exists
+
+It is the [Task Tracker](https://roadmap.sh/projects/task-tracker) project from the roadmap.sh
+back-end roadmap, built in Go following the project's specification: a CLI with persistence in a
+JSON file.
+
 ## Requirements
 
 - Go 1.24.8 or higher
@@ -63,6 +69,27 @@ Windows: just run normally with './task-cli' without adding or removing command 
 ./task-cli list todo
 ./task-cli list in-progress
 ```
+
+## How to test
+
+There are no automated tests. `go vet ./...` checks the code; to test the behavior, build the binary
+and run it in an empty directory, because the tasks are saved to `tasks.json` in the current
+directory:
+
+```sh
+go build -o task-cli ./cmd
+mkdir /tmp/task-test && cd /tmp/task-test
+/path/to/task-cli add "Buy cotonete"            # Task add sucessfully (ID: 1)
+/path/to/task-cli update 1 "Buy cotonete and snacks"
+/path/to/task-cli mark-in-progress 1
+/path/to/task-cli list in-progress              # prints the task as JSON, status "in_progress"
+/path/to/task-cli mark-done 1
+/path/to/task-cli list done                     # same task, status "done"
+/path/to/task-cli delete 1
+/path/to/task-cli list                          # null
+```
+
+Check `tasks.json` after each command to see the changes saved.
 
 ## Code information
 
