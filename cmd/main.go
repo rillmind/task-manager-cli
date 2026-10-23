@@ -6,8 +6,8 @@ import (
 	"os"
 	"strconv"
 
-	"github.com/rillmind/taskManagerCli/enum/status"
-	"github.com/rillmind/taskManagerCli/src/task"
+	"github.com/rillmind/task-manager-cli/enum/status"
+	"github.com/rillmind/task-manager-cli/src/task"
 )
 
 func main() {

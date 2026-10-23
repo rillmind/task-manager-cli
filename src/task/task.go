@@ -6,7 +6,7 @@ import (
 	"os"
 	"time"
 
-	"github.com/rillmind/taskManagerCli/enum/status"
+	"github.com/rillmind/task-manager-cli/enum/status"
 )
 
 type Task struct {
